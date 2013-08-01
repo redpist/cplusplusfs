@@ -3,12 +3,16 @@
 
 #include <string>
 
+namespace cplusplusfs {
+
 class File
 {
 public:
   File(const char *);
+  File(const wchar_t *) explicit;
+
   File(const std::string &);
-  File(const std::wstring &);
+  File(const std::wstring &) explicit;
 
   // Return true if a file (regular file, directory, symlink, named pipe, socket, device or door)
   // already exists at this path, else return false.
@@ -25,7 +29,7 @@ public:
   // // doesn't exists most of the time
   // File("/dev/i_am_an_imaginary_device").Exists();
   //
-  bool Exists();
+  bool Exists() const;
 
   enum class FileType {
     unknown = -1,
@@ -52,7 +56,7 @@ public:
   // // file doesn't exists most of the time and btw have no type
   // File("/dev/i_am_an_imaginary_device").Type();
   //
-  FileType Type();
+  FileType Type() const;
 
   enum class DeviceFileType {
     unknown = -1,
@@ -73,10 +77,27 @@ public:
   // // next statement sould return DeviceFileType::block because the '/dev/sda' file is a block device
   // File("/dev/sda").DeviveType();
   //
-  DeviceFileType DeviceType();
+  DeviceFileType DeviceType() const;
+
+  Cplusplusfs::Path Path();
+
+  Cplusplusfs::Path AbsolutePath();
+
+  Cplusplusfs::Path ResolvedAbsolutePath();
+
+  Cplusplusfs::Path RelativePath(File other_file = cplusplusfs::CurrentDirectory());
+
+  Cplusplusfs::Path ResolvedRelativePath(File other_file = cplusplusfs::CurrentDirectory());
+
+  File Parent() const;
+
+  File Root() const;
+
 
   ~File();
   /* data */
 };
+
+}
 
 #endif  // CPLUSPLUSFS_CPLUSPLUSFS_FILE_H_

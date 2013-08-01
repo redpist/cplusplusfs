@@ -3,31 +3,32 @@
 
 #include <string>
 
+namespace cplusplusfs {
+
 class Path
 {
 public:
   Path(const char *);
+  Path(const wchar_t *) explicit;
+
   Path(const std::string &);
-  Path(const std::wstring &);
+  Path(const std::wstring &) explicit;
 
-  // Return true if a file or a directory already exists at this path, else return false.
-  //
-  // Examples :
-  //
-  // // next statement return true because the '/' directory already exists
-  // Path("/").Exists();
-  //
-  // // next statement return true because the '/dev/urandom' file already exists
-  // Path("/dev/urandom").Exists();
-  //
-  // // next statement sould return false because the '/dev/i_am_an_imaginary_device' file doesn't exists most of the time
-  // Path("/dev/i_am_an_imaginary_device").Exists();
-  //
-  bool Exists();
+  Patch(const Path&) = default;
+  Patch(const Path&&) = default;
 
+  Path Extension() const;
+
+  std::vector<Path> Split() const;
+
+  operator std::string() const;
+  explicit operator std::wstring() const;
+  explicit operator std::vector<Path>() const;
 
   ~Path();
   /* data */
 };
+
+}
 
 #endif  // CPLUSPLUSFS_CPLUSPLUSFS_PATH_H_
