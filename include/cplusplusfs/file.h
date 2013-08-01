@@ -8,15 +8,14 @@ namespace cplusplusfs {
 
 class Path;
 
-class File
-{
+class File {
 public:
   File(const char *);
   explicit File(const wchar_t *);
 
   File(const std::string &);
   explicit File(const std::wstring &);
-  explicit File(const Path &);
+  explicit File(const cplusplusfs::Path &);
 
   // Return true if a file (regular file, directory, symlink, named pipe, socket, device or door)
   // already exists at this path, else return false.

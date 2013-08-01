@@ -17,9 +17,9 @@ public:
   explicit Path(const std::wstring &);
 
   Path(const Path&) = default;
-  Path(const Path&&) = default;
+  Path(Path&&) = default;
 
-  Path(const File&) explicit;
+  explicit Path(const File&);
 
   Path Extension() const;
 
