@@ -21,6 +21,8 @@ public:
 
   explicit Path(const File&);
 
+  bool HasWChar();
+
   Path Extension() const;
 
   Path Name() const;
