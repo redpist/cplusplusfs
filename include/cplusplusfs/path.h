@@ -5,8 +5,9 @@
 
 namespace cplusplusfs {
 
-class Path
-{
+class File;
+
+class Path {
 public:
   Path(const char *);
   Path(const wchar_t *) explicit;
@@ -14,10 +15,18 @@ public:
   Path(const std::string &);
   Path(const std::wstring &) explicit;
 
-  Patch(const Path&) = default;
-  Patch(const Path&&) = default;
+  Path(const Path&) = default;
+  Path(const Path&&) = default;
+
+  Path(const File&) explicit;
 
   Path Extension() const;
+
+  Path Name() const;
+
+  Path Parent() const;
+
+  Path Root() const;
 
   std::vector<Path> Split() const;
 
@@ -27,6 +36,11 @@ public:
 
   ~Path();
   /* data */
+private:
+  union {
+
+  }
+
 };
 
 }
