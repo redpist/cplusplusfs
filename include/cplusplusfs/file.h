@@ -15,7 +15,7 @@ public:
   //
   // Examples :
   //
-  // // next statement sould return true because the '/' directory already exists
+  // // next statement solutd return true because the '/' directory already exists
   // File("/").Exists();
   //
   // // next statement sould return true because the '/dev/urandom' device file already exists
@@ -43,14 +43,14 @@ public:
   // Examples :
   //
   // // next statement sould return FileType::directory because the '/' file is a directory
-  // File("/").Exists();
+  // File("/").Type();
   //
   // // next statement sould return FileType::device because the '/dev/urandom' file is a character device
-  // File("/dev/urandom").Exists();
+  // File("/dev/urandom").Type();
   //
   // // next statement sould return FileType::unknown because the '/dev/i_am_an_imaginary_device'
   // // file doesn't exists most of the time and btw have no type
-  // File("/dev/i_am_an_imaginary_device").Exists();
+  // File("/dev/i_am_an_imaginary_device").Type();
   //
   FileType Type();
 
@@ -65,13 +65,13 @@ public:
   // Examples :
   //
   // // next statement sould return DeviceFileType::unknown because the '/' file is a directory, so not a device
-  // File("/").Exists();
+  // File("/").DeviveType();
   //
   // // next statement sould return DeviceFileType::character because the '/dev/urandom' file is a character device
-  // File("/dev/urandom").Exists();
+  // File("/dev/urandom").DeviveType();
   //
   // // next statement sould return DeviceFileType::block because the '/dev/sda' file is a block device
-  // File("/dev/sda").Exists();
+  // File("/dev/sda").DeviveType();
   //
   DeviceFileType DeviceType();
 
