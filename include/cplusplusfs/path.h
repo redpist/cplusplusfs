@@ -2,6 +2,9 @@
 #define CPLUSPLUSFS_CPLUSPLUSFS_PATH_H_
 
 #include <string>
+#include <vector>
+
+#include "file.h"
 
 namespace cplusplusfs {
 
@@ -9,10 +12,10 @@ class Path
 {
 public:
   Path(const char *);
-  Path(const wchar_t *) explicit;
+  explicit Path(const wchar_t *);
 
   Path(const std::string &);
-  Path(const std::wstring &) explicit;
+  explicit Path(const std::wstring &);
 
   Patch(const Path&) = default;
   Patch(const Path&&) = default;

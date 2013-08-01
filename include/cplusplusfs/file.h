@@ -2,17 +2,20 @@
 #define CPLUSPLUSFS_CPLUSPLUSFS_FILE_H_
 
 #include <string>
+#include "functions.h"
 
 namespace cplusplusfs {
+
+class Path;
 
 class File
 {
 public:
   File(const char *);
-  File(const wchar_t *) explicit;
+  explicit File(const wchar_t *);
 
   File(const std::string &);
-  File(const std::wstring &) explicit;
+  explicit File(const std::wstring &);
 
   // Return true if a file (regular file, directory, symlink, named pipe, socket, device or door)
   // already exists at this path, else return false.
@@ -79,20 +82,19 @@ public:
   //
   DeviceFileType DeviceType() const;
 
-  Cplusplusfs::Path Path();
+  cplusplusfs::Path Path();
 
-  Cplusplusfs::Path AbsolutePath();
+  cplusplusfs::Path AbsolutePath();
 
-  Cplusplusfs::Path ResolvedAbsolutePath();
+  cplusplusfs::Path ResolvedAbsolutePath();
 
-  Cplusplusfs::Path RelativePath(File other_file = cplusplusfs::CurrentDirectory());
+  cplusplusfs::Path RelativePath(File other_file = cplusplusfs::CurrentDirectory());
 
-  Cplusplusfs::Path ResolvedRelativePath(File other_file = cplusplusfs::CurrentDirectory());
+  cplusplusfs::Path ResolvedRelativePath(File other_file = cplusplusfs::CurrentDirectory());
 
   File Parent() const;
 
   File Root() const;
-
 
   ~File();
   /* data */
