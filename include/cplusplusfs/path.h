@@ -37,11 +37,6 @@ public:
 
   ~Path();
   /* data */
-private:
-  union {
-
-  }
-
 };
 
 }
