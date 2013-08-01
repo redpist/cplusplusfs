@@ -3,6 +3,7 @@
 
 #include <string>
 #include "cplusplusfs/functions.h"
+#include "cplusplusfs/status.h"
 
 namespace cplusplusfs {
 
@@ -95,6 +96,12 @@ public:
   File Parent() const;
 
   File Root() const;
+
+  template  <typename Args...>
+  Status Copy(const Path &path, Args... args);
+
+  template  <typename Args...>
+  Status Move(const Path &path, Args... args);
 
   ~File();
   /* data */
