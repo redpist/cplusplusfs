@@ -2,7 +2,7 @@
 #define CPLUSPLUSFS_CPLUSPLUSFS_FILE_H_
 
 #include <string>
-#include "functions.h"
+#include "cplusplusfs/functions.h"
 
 namespace cplusplusfs {
 

@@ -4,8 +4,6 @@
 #include <string>
 #include <vector>
 
-#include "file.h"
-
 namespace cplusplusfs {
 
 class File;
