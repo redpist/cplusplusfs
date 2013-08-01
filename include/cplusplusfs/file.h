@@ -16,6 +16,7 @@ public:
 
   File(const std::string &);
   explicit File(const std::wstring &);
+  explicit File(const Path &);
 
   // Return true if a file (regular file, directory, symlink, named pipe, socket, device or door)
   // already exists at this path, else return false.
