@@ -2,7 +2,6 @@
 #define CPLUSPLUSFS_CPLUSPLUSFS_STATUS_H_
 
 #include <cstdint>
-
 #include <string>
 #include <vector>
 
