@@ -97,11 +97,15 @@ public:
 
   File Root() const;
 
+  Status Create();
+
   template  <typename Args...>
   Status Copy(const Path &path, Args... args);
 
   template  <typename Args...>
   Status Move(const Path &path, Args... args);
+
+  File &operator()();
 
   ~File();
   /* data */
