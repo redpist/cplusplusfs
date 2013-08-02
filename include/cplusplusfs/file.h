@@ -99,11 +99,85 @@ public:
 
   Status Create();
 
-  template  <typename Args...>
-  Status Copy(const Path &path, Args... args);
+  std::vector<File> Files();
 
-  template  <typename Args...>
-  Status Move(const Path &path, Args... args);
+  bool Writable();
+
+  bool Readable();
+
+  bool Executable();
+
+  struct Permissions {
+    enum class User {
+      Execute = 0100,
+      Write = 0200,
+      Read = 0400,
+      All = 0700,
+    };
+
+    enum class Group {
+      Execute = 010,
+      Write = 020,
+      Read = 040,
+      All = 070,
+    };
+
+    enum class Other {
+      Execute = 01,
+      Write = 02,
+      Read = 04,
+      All = 07,
+    };
+
+    struct {
+      bool Writable();
+
+      bool Readable();
+
+      bool Executable();
+    } user;
+
+    struct {
+      bool Writable();
+
+      bool Readable();
+
+      bool Executable();
+    } group;
+
+    struct {
+      bool Writable();
+
+      bool Readable();
+
+      bool Executable();        
+    } other;
+
+    private:
+      int permissions_;
+  };
+
+  template  <typename... Args>
+  Status SetPermissions(Permissions::User user_permission, Args... args);
+
+  template  <typename... Args>
+  Status SetPermissions(Permissions::Group group_permission, Args... args);
+
+  template  <typename... Args>
+  Status SetPermissions(Permissions::Other other_permission, Args... args);
+
+  // File(".").GetPermissions().user.Writable()
+  Permissions GetPermissions();
+
+  template  <typename... Args>
+  Status Copy(const cplusplusfs::Path &path, Args... args);
+
+  template  <typename... Args>
+  Status Move(const cplusplusfs::Path &path, Args... args);
+
+  std::size_t Size();
+
+  std::size_t TrueSize();
 
   File &operator()();
 
